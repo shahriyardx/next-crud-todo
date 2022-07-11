@@ -1,3 +1,4 @@
+require("../../../database/init")
 import TodoModel from "../../../database/TodoModel";
 
 const handler = async (req, res) => {
