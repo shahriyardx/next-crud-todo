@@ -19,8 +19,15 @@ const Home = () => {
     callback()
   }
 
-  const deleteTodo = (todoId) => {
-    console.log(todoId)
+  const deleteTodo = async (todoId) => {
+    const data = await fetch(`http://localhost:3000/api/todo/${todoId}`, {
+      method: "DELETE"
+    }).then(response => response.json())
+    
+    if (data.deletedCount) {
+      const newTodos = todos.filter(todo => todo._id !== todoId)
+      setTodos(newTodos)
+    }
   }
 
   return (

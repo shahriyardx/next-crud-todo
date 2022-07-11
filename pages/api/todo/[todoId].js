@@ -2,7 +2,7 @@ require("../../../database/init")
 import TodoModel from "../../../database/TodoModel";
 
 const handler = async (req, res) => {
-  const todoId = req.params.todoId
+  const todoId = req.query.todoId
 
   switch (req.method) {
     case "DELETE":
