@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AddForm from '../components/AddForm'
 import Todos from '../components/Todos'
 
@@ -29,6 +29,14 @@ const Home = () => {
       setTodos(newTodos)
     }
   }
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/todo")
+      .then(response => response.json())
+      .then(data => {
+        setTodos(data)
+      })
+  }, [])
 
   return (
     <div style={{ display: 'grid', placeItems: 'center', marginTop: 30 }}>
