@@ -1,8 +1,9 @@
 import React from 'react'
 
-const Todo = () => {
+const Todo = ({ todo, deleteTodo }) => {
+
   return (
-    <div>Todo</div>
+    <li>{todo.content} <button onClick={() => deleteTodo(todo._id)}>x</button></li>
   )
 }
 

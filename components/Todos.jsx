@@ -1,8 +1,12 @@
 import React from 'react'
+import Todo from './Todo'
 
-const Todos = () => {
+const Todos = ({ todos, deleteTodo }) => {
+
   return (
-    <div>Todos</div>
+    <ul>
+      {todos.map(todo => <Todo key={todo._id} todo={todo} deleteTodo={deleteTodo} />)}
+    </ul>
   )
 }
 
