@@ -30,6 +30,22 @@ const Home = () => {
     }
   }
 
+  const updateTodo = async (todoId, content, callback) => {
+    const data = await fetch(`http://localhost:3000/api/todo/${todoId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ content })
+    }).then(response => response.json())
+    
+    if (data.modifiedCount) {
+      const updatedTodos = todos.map(todo => todo._id === todoId ? {...todo, content} : todo )
+      setTodos(updatedTodos)
+      callback()
+    }
+  }
+
   useEffect(() => {
     fetch("http://localhost:3000/api/todo")
       .then(response => response.json())
@@ -42,7 +58,11 @@ const Home = () => {
     <div style={{ display: 'grid', placeItems: 'center', marginTop: 30 }}>
       <div>
         <AddForm addTodo={addTodo} />
-        <Todos todos={todos} deleteTodo={deleteTodo} />
+        <Todos 
+          todos={todos} 
+          deleteTodo={deleteTodo} 
+          updateTodo={updateTodo} 
+        />
       </div>
     </div>
   )

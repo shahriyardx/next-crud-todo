@@ -1,11 +1,19 @@
 import React from 'react'
 import Todo from './Todo'
 
-const Todos = ({ todos, deleteTodo }) => {
+const Todos = ({ todos, deleteTodo, updateTodo }) => {
 
   return (
     <ul>
-      {todos.map(todo => <Todo key={todo._id} todo={todo} deleteTodo={deleteTodo} />)}
+      {todos.map(todo => (
+        <Todo 
+          key={todo._id} 
+          todo={todo} 
+          deleteTodo={deleteTodo} 
+          updateTodo={updateTodo} 
+        />
+        )
+      )}
     </ul>
   )
 }
