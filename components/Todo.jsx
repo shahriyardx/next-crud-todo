@@ -26,7 +26,10 @@ const Todo = ({ todo, deleteTodo, updateTodo }) => {
 
       {editing && (
         <form onSubmit={handleUpdate}>
-          <input name="content" type="text" defaultValue={todo.content} />
+          <input 
+            name="content" 
+            type="text" defaultValue={todo.content} 
+          />
           <button>Update</button>
           <button onClick={() => setEditing(false)}>Cancel</button>
         </form>
